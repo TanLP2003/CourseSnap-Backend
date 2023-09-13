@@ -1,0 +1,210 @@
+{
+  "Routes": [
+    //Identity.API
+    {
+      "DownstreamPathTemplate": "/api/Auth/signup",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9005"
+        }
+      ],
+      "UpstreamPathTemplate": "/Auth/signup",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Auth/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9005"
+        }
+      ],
+      "UpstreamPathTemplate": "/Auth/login",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Auth/refresh",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9005"
+        }
+      ],
+      "UpstreamPathTemplate": "/Auth/refresh",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Auth",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9005"
+        }
+      ],
+      "UpstreamPathTemplate": "/Auth",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    // Product.API
+    {
+      "DownstreamPathTemplate": "/api/Course",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9000"
+        }
+      ],
+      "UpstreamPathTemplate": "/Course",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Course/{courseName}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9000"
+        }
+      ],
+      "UpstreamPathTemplate": "/Course/{name}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Course/{courseId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9000"
+        }
+      ],
+      "UpstreamPathTemplate": "/Course/{courseId}",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    //ShoppingCart.API
+    {
+      "DownstreamPathTemplate": "/api/Basket/{userId:guid}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Basket/{userId:guid}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Basket",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Basket",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Basket/checkout",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Basket/checkout",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    //Discount.API
+    // Coupon
+    {
+      "DownstreamPathTemplate": "/api/Discount/Coupon?courseName={courseName}&code={code}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9002"
+        }
+      ],
+      "UpstreamPathTemplate": "/Discount/Coupon?courseName={courseName}&code={code}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Discount/Coupon",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9002"
+        }
+      ],
+      "UpstreamPathTemplate": "/Discount/Coupon",
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
+    },
+    // SpecialSale
+    {
+      "DownstreamPathTemplate": "/api/Discount/SpecialSale/{category}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9002"
+        }
+      ],
+      "UpstreamPathTemplate": "/Discount/SpecialSale/{category}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Discount/SpecialSale",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9002"
+        }
+      ],
+      "UpstreamPathTemplate": "/Discount/SpecialSale",
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
+    },
+    // Payment.API
+    {
+      "DownstreamPathTemplate": "/api/Bill/{billId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9004"
+        }
+      ],
+      "UpstreamPathTemplate": "/Payment/Bill/{billId}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Bill/{userId:guid}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9004"
+        }
+      ],
+      "UpstreamPathTemplate": "/Payment/Bill/{userId:guid}",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:8006"
+  }
+}

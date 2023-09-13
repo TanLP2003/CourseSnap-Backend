@@ -1,0 +1,72 @@
+version: '3.4'
+
+services:
+  productdb:
+    image: mongo
+
+  shoppingcartdb:
+    image: redis
+  
+  discountdb:
+    image: mysql
+
+  paymentdb:
+    image: mongo
+
+  identitydb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  rabbitmqserver:
+    image: rabbitmq:3-management-alpine
+
+  product.api:
+    image: ${DOCKER_REGISTRY-}productapi
+    build:
+      context: .
+      dockerfile: Services/Product/Product.API/Dockerfile
+
+  shoppingcart.api:
+    image: ${DOCKER_REGISTRY-}shoppingcartapi
+    build:
+      context: .
+      dockerfile: Services/ShoppingCart/ShoppingCart.API/Dockerfile
+
+  discount.api:
+    image: ${DOCKER_REGISTRY-}discountapi
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.API/Dockerfile
+
+  grpcserver:
+    image: ${DOCKER_REGISTRY-}grpcserver
+    build:
+      context: .
+      dockerfile: Services/Discount/GrpcServer/Dockerfile
+
+  payment.api:
+    image: ${DOCKER_REGISTRY-}paymentapi
+    build:
+      context: .
+      dockerfile: Services/Payment/Payment.API/Dockerfile
+
+
+  identity.api:
+    image: ${DOCKER_REGISTRY-}identityapi
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity.API/Dockerfile
+
+  ocelotgateway:
+    image: ${DOCKER_REGISTRY-}ocelotgateway
+    build:
+      context: .
+      dockerfile: APIGateway/OcelotGateway/Dockerfile
+
+
+volumes:
+  productdata:
+  redisdata:
+  discountdata:
+  paymentdata:
+  identitydata:
+  shareddata:
