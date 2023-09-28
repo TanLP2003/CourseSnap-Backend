@@ -9,8 +9,8 @@ namespace ShoppingCart.Domain.Contracts
 {
     public interface IBasketRepo
     {
-        Task<Basket> GetBasket(Guid userId);
+        Task<Basket> GetBasket(string userName);
         Task UpdateBasket(Basket basket);
-        Task DeleteBasket(Guid userId);
+        Task DeleteBasket(string userName);
     }
 }

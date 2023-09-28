@@ -9,7 +9,7 @@ namespace ShoppingCart.Application.Models
 {
     public class BasketReturnModel
     {
-        public Guid UserId { get; set; }
+        public string UserName { get; set; }
         public List<BasketItemReturnModel>? Items { get; set; }
 
         public int TotalCost { get; set; }

@@ -16,6 +16,16 @@ namespace Identity.Infrastructure
     {
         public static void AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddIdentity<User, IdentityRole>(opt =>
+            {
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireUppercase = true;
+                opt.Password.RequiredLength = 8;
+                opt.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<IdentityContext>()
+            .AddDefaultTokenProviders();
+
             services.AddDbContext<IdentityContext>(opt =>
             {
                 opt.UseSqlServer(configuration.GetConnectionString("DbConnection"), sqlOpt =>
@@ -23,7 +33,6 @@ namespace Identity.Infrastructure
                     sqlOpt.EnableRetryOnFailure(10, TimeSpan.FromSeconds(15), null);
                 });
             });
-
         }
     }
 }

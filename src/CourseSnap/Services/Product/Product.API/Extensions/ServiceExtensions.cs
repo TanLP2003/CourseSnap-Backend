@@ -1,32 +1,11 @@
-﻿using MassTransit;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Payment.Application.EventConsumer;
-using ServiceBus;
 using System.Text;
 
-namespace Payment.API.Extensions
+namespace Product.API.Extensions
 {
     public static class ServiceExtensions
     {
-        public static void ConfigureMessageBus(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddMassTransit(x =>
-            {
-                x.AddConsumer<CheckoutEventConsumer>();
-                x.UsingRabbitMq((context, config) =>
-                {
-                    config.Host(configuration.GetSection("RabbitmqUrl")["HostAddress"]);
-                    config.ReceiveEndpoint(EventQueues.CheckoutEventQueue, c =>
-                    {
-                        c.ConfigureConsumer<CheckoutEventConsumer>(context);
-                    });
-                });
-            });
-
-            services.AddScoped<CheckoutEventConsumer>();
-        }
-
         public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
         {
             var securityKey = configuration.GetSection("SecurityKey").ToString();

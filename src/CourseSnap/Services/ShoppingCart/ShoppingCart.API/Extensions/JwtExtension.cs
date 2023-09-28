@@ -1,30 +1,15 @@
-﻿using Identity.Domain.Entities;
-using Identity.Infrastructure.Data;
-using JwtSetup;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Cryptography;
+using System.Text;
 
-namespace Identity.API.Extensions
+namespace ShoppingCart.API.Extensions
 {
     public static class JwtExtension
     {
         public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
         {
-            var jwtKeyOptions = new JwtKeyOptions();
-            configuration.Bind(nameof(JwtKeyOptions), jwtKeyOptions);
-            services.AddSingleton(jwtKeyOptions);
-
-            services.AddIdentity<User, IdentityRole>(opt =>
-            {
-                opt.Password.RequireDigit = true;
-                opt.Password.RequireUppercase = true;
-                opt.Password.RequiredLength = 8;
-                opt.User.RequireUniqueEmail = true;
-            })
-            .AddEntityFrameworkStores<IdentityContext>()
-            .AddDefaultTokenProviders();
+            var securityKey = configuration.GetSection("SecurityKey").ToString();
+            var encodedKey = Encoding.ASCII.GetBytes(securityKey);
 
             services.AddAuthentication(opt =>
             {
@@ -33,10 +18,6 @@ namespace Identity.API.Extensions
             })
                 .AddJwtBearer(options =>
                 {
-                    var rsa = RSA.Create();
-                    var publicKey = File.ReadAllText(jwtKeyOptions.PublicKeyFilePath);
-                    rsa.FromXmlString(publicKey);
-
                     //options.RequireHttpsMetadata = false;
                     //options.SaveToken = true;
 
@@ -58,7 +39,7 @@ namespace Identity.API.Extensions
                         ValidateIssuer = false,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new RsaSecurityKey(rsa)
+                        IssuerSigningKey = new SymmetricSecurityKey(encodedKey)
                     };
 
                 });

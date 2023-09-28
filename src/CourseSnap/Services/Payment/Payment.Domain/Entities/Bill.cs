@@ -13,7 +13,7 @@ namespace Payment.Domain.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? BillId { get; set; }
-        public Guid UserId { get; set; }
+        public string UserName { get; set; }
         public int TotalCost { get; set; }
         public int Tax { get; set; }
         public int FinalCost { get; set; }

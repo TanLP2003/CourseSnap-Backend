@@ -1,6 +1,6 @@
+using JwtSetup;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using OcelotGateway.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = new ConfigurationBuilder()

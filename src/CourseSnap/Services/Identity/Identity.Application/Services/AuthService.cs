@@ -6,6 +6,7 @@ using Identity.Domain.Exceptions;
 using JwtSetup;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -25,14 +26,14 @@ namespace Identity.Application.Services
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
         private readonly ILogger<AuthService> _logger;
-        private readonly JwtKeyOptions _jwtKeyOptions;
+        private readonly IConfiguration _configuration;
 
-        public AuthService(IMapper mapper, UserManager<User> userManager, ILogger<AuthService> logger, JwtKeyOptions jwtKeyOptions)
+        public AuthService(IMapper mapper, UserManager<User> userManager, ILogger<AuthService> logger, IConfiguration configuration)
         {
             _logger = logger;
             _mapper = mapper;
             _userManager = userManager;
-            _jwtKeyOptions = jwtKeyOptions;
+            _configuration = configuration;
         }
 
         public async Task<Token> Login(UserLoginModel loginModel)
@@ -71,9 +72,10 @@ namespace Identity.Application.Services
 
         public async Task<Token> GenerateToken(string userEmail)
         {
-            var rsa = await GetRsaExtensions.UseKeyFromFile(_jwtKeyOptions.PrivateKeyFilePath);
+            var securityKey = _configuration.GetSection("SecurityKey").ToString();
+            var encodedKey = Encoding.ASCII.GetBytes(securityKey);
             var jwtTokenHandler = new JwtSecurityTokenHandler();
-            var signingCredential = new SigningCredentials(new RsaSecurityKey(rsa), SecurityAlgorithms.RsaSha256);
+            var signingCredential = new SigningCredentials(new SymmetricSecurityKey(encodedKey), SecurityAlgorithms.HmacSha256);
             var claims = new List<Claim> { new Claim(ClaimTypes.Email, userEmail) };
             var jwtSecurityOptions = new JwtSecurityToken(
                     claims: claims,
@@ -103,20 +105,20 @@ namespace Identity.Application.Services
         private async Task<ClaimsPrincipal> GetPrincipalFromToken(string token)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
-            var rsa = await GetRsaExtensions.UseKeyFromFile(_jwtKeyOptions.PublicKeyFilePath);
-
+            var securityKey = _configuration.GetSection("SecurityKey").ToString();
+            var encodedKey = Encoding.ASCII.GetBytes(securityKey);
             var tokenValidationParam = new TokenValidationParameters
             {
                 ValidateAudience = false,
                 ValidateIssuer = false,
                 ValidateIssuerSigningKey = true,
                 ValidateLifetime = true,
-                IssuerSigningKey = new RsaSecurityKey(rsa)
+                IssuerSigningKey = new SymmetricSecurityKey(encodedKey)
             };
 
             var principal = new JwtSecurityTokenHandler().ValidateToken(token, tokenValidationParam, out SecurityToken securityToken);
             JwtSecurityToken jwtSecurityToken = securityToken as JwtSecurityToken;
-            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.RsaSha256, StringComparison.InvariantCultureIgnoreCase))
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new SecurityTokenException("Invalid token");
             }

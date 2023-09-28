@@ -12,9 +12,9 @@ namespace ShoppingCart.Application.Services
 {
     public interface IBasketService
     {
-        Task<BasketReturnModel> GetBasket(Guid userId);
+        Task<BasketReturnModel> GetBasket(string userName);
         Task<BasketReturnModel> UpdateBasket(BasketWriteModel model);
-        Task DeleteBasket(Guid userId);
+        Task DeleteBasket(string userName);
         Task<CheckoutEvent> Checkout(BasketCheckout basketCheckout);
     }
 }

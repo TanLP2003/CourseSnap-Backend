@@ -24,9 +24,9 @@ namespace ShoppingCart.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<BasketReturnModel> GetBasket(Guid userId)
+        public async Task<BasketReturnModel> GetBasket(string userName)
         {
-            var basket = await _repo.GetBasket(userId);
+            var basket = await _repo.GetBasket(userName);
             return _mapper.Map<BasketReturnModel>(basket);  
         }
 
@@ -37,14 +37,14 @@ namespace ShoppingCart.Application.Services
             return _mapper.Map<BasketReturnModel>(basket);
         }
 
-        public async Task DeleteBasket(Guid userId)
+        public async Task DeleteBasket(string userName)
         {
-            await _repo.DeleteBasket(userId);   
+            await _repo.DeleteBasket(userName);   
         }
 
         public async Task<CheckoutEvent> Checkout(BasketCheckout basketCheckout)
         {
-            var basket = await _repo.GetBasket(basketCheckout.UserId);
+            var basket = await _repo.GetBasket(basketCheckout.UserName);
             if (basket == null)
             {
                 throw new NotFoundException("Basket does not exist"); 
@@ -64,7 +64,7 @@ namespace ShoppingCart.Application.Services
             }
 
             var checkoutEvent = _mapper.Map<CheckoutEvent>(basketCheckout);
-            await _repo.DeleteBasket(basketCheckout.UserId);
+            await _repo.DeleteBasket(basketCheckout.UserName);
             return checkoutEvent;
         }
     }

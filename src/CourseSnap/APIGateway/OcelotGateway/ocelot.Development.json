@@ -60,11 +60,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Course",
-      "UpstreamHttpMethod": [ "GET", "POST" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "GET", "POST" ]
     },
     {
       "DownstreamPathTemplate": "/api/Course/{courseName}",
@@ -76,11 +72,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Course/{name}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
       "DownstreamPathTemplate": "/api/Course/{courseId}",
@@ -92,11 +84,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Course/{courseId}",
-      "UpstreamHttpMethod": [ "PUT" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "PUT" ]
     },
     //ShoppingCart.API
     {
@@ -109,11 +97,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Basket/{userId:guid}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
       "DownstreamPathTemplate": "/api/Basket",
@@ -125,11 +109,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Basket",
-      "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "POST" ]
     },
     {
       "DownstreamPathTemplate": "/api/Basket/checkout",
@@ -141,11 +121,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Basket/checkout",
-      "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "POST" ]
     },
     //Discount.API
     // Coupon
@@ -159,11 +135,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Discount/Coupon?courseName={courseName}&code={code}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
       "DownstreamPathTemplate": "/api/Discount/Coupon",
@@ -175,11 +147,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Discount/Coupon",
-      "UpstreamHttpMethod": [ "POST", "PUT" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
     // SpecialSale
     {
@@ -192,11 +160,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Discount/SpecialSale/{category}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
       "DownstreamPathTemplate": "/api/Discount/SpecialSale",
@@ -208,15 +172,11 @@
         }
       ],
       "UpstreamPathTemplate": "/Discount/SpecialSale",
-      "UpstreamHttpMethod": [ "POST", "PUT" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
     // Payment.API
     {
-      "DownstreamPathTemplate": "/api/Bill/{billId}",
+      "DownstreamPathTemplate": "/api/Bill/getById/{billId}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -224,15 +184,11 @@
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Payment/Bill/{billId}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamPathTemplate": "/Payment/Bill/getById/{billId}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Bill/{userId:guid}",
+      "DownstreamPathTemplate": "/api/Bill/getByUserName/{userName}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -240,12 +196,8 @@
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Payment/Bill/{userId:guid}",
-      "UpstreamHttpMethod": [ "GET" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamPathTemplate": "/Payment/Bill/getByUserName/{userName}",
+      "UpstreamHttpMethod": [ "GET" ]
     }
   ],
   "GlobalConfiguration": {

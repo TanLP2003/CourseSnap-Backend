@@ -51,7 +51,6 @@ namespace Identity.API.Controllers
         }
 
         [HttpPut]
-        [Authorize]
         public async Task<IActionResult> UpdateUser([FromBody] UserUpdateModel updateModel)
         {
             var userEmail = await _service.GetUserEmailFromToken(HttpContext);

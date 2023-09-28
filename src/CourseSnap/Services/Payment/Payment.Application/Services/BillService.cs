@@ -24,9 +24,9 @@ namespace Payment.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<BillModel>> GetByUserId(Guid userId)
+        public async Task<IEnumerable<BillModel>> GetByUserName(string userName)
         {
-            var billList = await _repo.GetByUserId(userId);
+            var billList = await _repo.GetByUserName(userName);
             return _mapper.Map<IEnumerable<BillModel>>(billList);
         }
 

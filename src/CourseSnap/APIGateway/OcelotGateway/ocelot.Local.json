@@ -60,11 +60,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Course",
-      "UpstreamHttpMethod": [ "GET", "POST" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "GET", "POST" ]
     },
     {
       "DownstreamPathTemplate": "/api/Course/{courseName}",
@@ -92,7 +88,7 @@
     },
     //ShoppingCart.API
     {
-      "DownstreamPathTemplate": "/api/Basket/{userId:guid}",
+      "DownstreamPathTemplate": "/api/Basket/{userName}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -100,7 +96,7 @@
           "Port": "8001"
         }
       ],
-      "UpstreamPathTemplate": "/Basket/{userId:guid}",
+      "UpstreamPathTemplate": "/Basket/{userName}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
@@ -180,7 +176,7 @@
     },
     // Payment.API
     {
-      "DownstreamPathTemplate": "/api/Bill/{billId}",
+      "DownstreamPathTemplate": "/api/Bill/getById/{billId}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -188,11 +184,11 @@
           "Port": "8004"
         }
       ],
-      "UpstreamPathTemplate": "/Payment/Bill/{billId}",
+      "UpstreamPathTemplate": "/Payment/Bill/getById/{billId}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Bill/{userId:guid}",
+      "DownstreamPathTemplate": "/api/Bill/getByUserName/{userName}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -200,7 +196,7 @@
           "Port": "8004"
         }
       ],
-      "UpstreamPathTemplate": "/Payment/Bill/{userId:guid}",
+      "UpstreamPathTemplate": "/Payment/Bill/getByUserName/{userName}",
       "UpstreamHttpMethod": [ "GET" ]
     }
   ],

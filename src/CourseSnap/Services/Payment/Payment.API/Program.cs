@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
 builder.Services.ConfigureMessageBus(builder.Configuration);
-
+builder.Services.ConfigureJwt(builder.Configuration); 
 var app = builder.Build();
 app.ConfigureExceptionMiddleware();
 // Configure the HTTP request pipeline.
@@ -23,8 +23,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

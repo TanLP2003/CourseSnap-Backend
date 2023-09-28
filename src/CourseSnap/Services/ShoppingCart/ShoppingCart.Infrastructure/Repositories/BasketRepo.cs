@@ -17,15 +17,15 @@ namespace ShoppingCart.Infrastructure.Repositories
             _database = _redis.GetDatabase();
         }
 
-        public async Task<Basket> GetBasket(Guid id)
+        public async Task<Basket> GetBasket(string userName)
         {
-            var basket = await _database.StringGetAsync(id.ToString());
+            var basket = await _database.StringGetAsync(userName);
             
             if (basket.IsNull)
             {
                 return new Basket
                 {
-                    UserId = id,
+                    UserName = userName,
                     Items = new List<BasketItem>(),
                 };
             }
@@ -36,9 +36,9 @@ namespace ShoppingCart.Infrastructure.Repositories
         public async Task UpdateBasket(Basket basket)
         {
             var serialObj = JsonSerializer.Serialize(basket);
-            await _database.StringSetAsync(basket.UserId.ToString(), serialObj);   
+            await _database.StringSetAsync(basket.UserName, serialObj);   
         }
 
-        public async Task DeleteBasket(Guid userId) => await _database.KeyDeleteAsync(userId.ToString());
+        public async Task DeleteBasket(string userName) => await _database.KeyDeleteAsync(userName);
     }
 }

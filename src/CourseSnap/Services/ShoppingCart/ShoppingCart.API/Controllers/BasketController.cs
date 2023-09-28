@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.API.Grpc;
@@ -10,6 +11,7 @@ namespace ShoppingCart.API.Controllers
 {
     [Route("api/Basket")]
     [ApiController]
+    [Authorize]
     public class BasketController : ControllerBase
     {
         private readonly IBasketService _services;
@@ -22,10 +24,10 @@ namespace ShoppingCart.API.Controllers
             _publishEndpoint = publishEndpoint;
         }
 
-        [HttpGet("{userId:guid}", Name ="GetBasket")]
-        public async Task<IActionResult> GetBasket(Guid userId)
+        [HttpGet("{userName}", Name ="GetBasket")]
+        public async Task<IActionResult> GetBasket(string userName)
         {
-            var result = await _services.GetBasket(userId);
+            var result = await _services.GetBasket(userName);
             return Ok(result);
         }
 
@@ -44,13 +46,13 @@ namespace ShoppingCart.API.Controllers
             
             var basketResponse = await _services.UpdateBasket(model);
             
-            return CreatedAtAction("GetBasket", new {userId = basketResponse.UserId}, basketResponse);
+            return CreatedAtAction("GetBasket", new {userName = basketResponse.UserName}, basketResponse);
         }
 
-        [HttpDelete("{userId:guid}")]
-        public async Task<IActionResult> DeleteBasket(Guid userId)
+        [HttpDelete("{userName}")]
+        public async Task<IActionResult> DeleteBasket(string userName)
         {
-            await _services.DeleteBasket(userId);
+            await _services.DeleteBasket(userName);
             return NoContent();
         }
 

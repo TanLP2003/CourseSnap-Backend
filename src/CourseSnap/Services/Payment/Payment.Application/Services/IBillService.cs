@@ -9,7 +9,7 @@ namespace Payment.Application.Services
 {
     public interface IBillService
     {
-        Task<IEnumerable<BillModel>> GetByUserId(Guid userId);
+        Task<IEnumerable<BillModel>> GetByUserName(string userName);
         Task<BillModel> GetByBillId(string billId);
         Task<bool> Delete(string billId);
     }

@@ -10,7 +10,7 @@ namespace ShoppingCart.Application.Models.Checkout
     public class BasketCheckout
     {
         [Required]
-        public Guid UserId { get; set; }
+        public string UserName { get; set; }
         public int TotalCost { get; set; }
         public int Tax { get; set; } 
         public int FinalCost { get; set; }

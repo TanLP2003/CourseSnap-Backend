@@ -3,6 +3,7 @@ using Identity.Application;
 using Identity.Domain.Entities;
 using Identity.Infrastructure;
 using Identity.Infrastructure.Data;
+using JwtSetup;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

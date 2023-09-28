@@ -17,8 +17,8 @@ namespace Payment.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Bill>> GetByUserId(Guid userId) 
-            => await _context.Bills.Find(b => b.UserId == userId).ToListAsync();
+        public async Task<IEnumerable<Bill>> GetByUserName(string userName) 
+            => await _context.Bills.Find(b => b.UserName == userName).ToListAsync();
 
         public async Task<Bill> GetByBillId(string billId) 
             => await _context.Bills.Find(b => b.BillId == billId).FirstOrDefaultAsync();

@@ -11,7 +11,7 @@ namespace ShoppingCart.Application.Models
     public class BasketWriteModel
     {
         [Required]
-        public Guid UserId { get; set; }
+        public string UserName { get; set; }
         public List<BasketItem>? Items { get; set; }
     }
 }

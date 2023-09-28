@@ -10,7 +10,7 @@ namespace ShoppingCart.Domain.Entities
     public class Basket
     {
         [Required]
-        public Guid UserId { get; set; }
+        public string UserName { get; set; }
         public List<BasketItem>? Items { get; set; }
 
         public int TotalCost

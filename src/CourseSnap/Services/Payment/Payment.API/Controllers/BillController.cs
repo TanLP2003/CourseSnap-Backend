@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Payment.Application.Models;
 using Payment.Application.Services;
@@ -7,6 +8,7 @@ namespace Payment.API.Controllers
 {
     [Route("api/Bill")]
     [ApiController]
+    [Authorize]
     public class BillController : ControllerBase
     {
         private readonly IBillService _service;
@@ -22,14 +24,14 @@ namespace Payment.API.Controllers
             return Ok(bill);
         }
 
-        [HttpGet("{userId:guid}", Name = "GetByUserId")]
-        public async Task<IActionResult> GetByUserId(Guid userId)
+        [HttpGet("getByUserName/{userName}", Name = "GetByUserName")]
+        public async Task<IActionResult> GetByUserId(string userName)
         {
-            var billReturnList = await _service.GetByUserId(userId);    
+            var billReturnList = await _service.GetByUserName(userName);    
             return Ok(billReturnList);
         }
 
-        [HttpDelete("{billId}")]
+        [HttpDelete("getById/{billId}")]
         public async Task<IActionResult> Delete(string billId)
         {
             var result = await _service.Delete(billId);

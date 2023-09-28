@@ -10,7 +10,7 @@ namespace Payment.Application.Contracts
 {
     public interface IBillRepo
     {
-        Task<IEnumerable<Bill>> GetByUserId(Guid userId);
+        Task<IEnumerable<Bill>> GetByUserName(string userName);
         Task<Bill> GetByBillId(string billId);
         Task Add(Bill bill);
         Task<bool> Delete(string billId);
