@@ -3,11 +3,11 @@
     //Identity.API
     {
       "DownstreamPathTemplate": "/api/Auth/signup",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9005"
+          "Port": "8005"
         }
       ],
       "UpstreamPathTemplate": "/Auth/signup",
@@ -15,11 +15,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Auth/login",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9005"
+          "Port": "8005"
         }
       ],
       "UpstreamPathTemplate": "/Auth/login",
@@ -27,11 +27,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Auth/refresh",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9005"
+          "Port": "8005"
         }
       ],
       "UpstreamPathTemplate": "/Auth/refresh",
@@ -39,11 +39,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Auth",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9005"
+          "Port": "8005"
         }
       ],
       "UpstreamPathTemplate": "/Auth",
@@ -52,11 +52,11 @@
     // Product.API
     {
       "DownstreamPathTemplate": "/api/Course",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9000"
+          "Port": "8000"
         }
       ],
       "UpstreamPathTemplate": "/Course",
@@ -68,11 +68,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Course/{courseName}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9000"
+          "Port": "8000"
         }
       ],
       "UpstreamPathTemplate": "/Course/{name}",
@@ -80,11 +80,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Course/{courseId}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9000"
+          "Port": "8000"
         }
       ],
       "UpstreamPathTemplate": "/Course/{courseId}",
@@ -93,11 +93,11 @@
     //ShoppingCart.API
     {
       "DownstreamPathTemplate": "/api/Basket/{userId:guid}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9001"
+          "Port": "8001"
         }
       ],
       "UpstreamPathTemplate": "/Basket/{userId:guid}",
@@ -105,11 +105,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Basket",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9001"
+          "Port": "8001"
         }
       ],
       "UpstreamPathTemplate": "/Basket",
@@ -117,11 +117,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Basket/checkout",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9001"
+          "Port": "8001"
         }
       ],
       "UpstreamPathTemplate": "/Basket/checkout",
@@ -131,11 +131,11 @@
     // Coupon
     {
       "DownstreamPathTemplate": "/api/Discount/Coupon?courseName={courseName}&code={code}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9002"
+          "Port": "8002"
         }
       ],
       "UpstreamPathTemplate": "/Discount/Coupon?courseName={courseName}&code={code}",
@@ -143,11 +143,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Discount/Coupon",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9002"
+          "Port": "8002"
         }
       ],
       "UpstreamPathTemplate": "/Discount/Coupon",
@@ -156,11 +156,11 @@
     // SpecialSale
     {
       "DownstreamPathTemplate": "/api/Discount/SpecialSale/{category}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9002"
+          "Port": "8002"
         }
       ],
       "UpstreamPathTemplate": "/Discount/SpecialSale/{category}",
@@ -168,11 +168,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Discount/SpecialSale",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9002"
+          "Port": "8002"
         }
       ],
       "UpstreamPathTemplate": "/Discount/SpecialSale",
@@ -181,11 +181,11 @@
     // Payment.API
     {
       "DownstreamPathTemplate": "/api/Bill/{billId}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9004"
+          "Port": "8004"
         }
       ],
       "UpstreamPathTemplate": "/Payment/Bill/{billId}",
@@ -193,11 +193,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Bill/{userId:guid}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9004"
+          "Port": "8004"
         }
       ],
       "UpstreamPathTemplate": "/Payment/Bill/{userId:guid}",
