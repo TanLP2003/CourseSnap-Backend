@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Discount.Domain.Entities
 {
-    public class SpecialSale
+    public class CategorySale
     {
         [Key]
         public string Category { get; set; }

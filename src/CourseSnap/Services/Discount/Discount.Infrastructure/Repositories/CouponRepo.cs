@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Discount.Domain.Contracts;
+using Discount.Application.Contracts;
 using Discount.Domain.Entities;
 using Discount.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;

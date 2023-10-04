@@ -21,7 +21,7 @@ namespace Discount.Infrastructure.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new CouponSeed());
-            modelBuilder.ApplyConfiguration(new SpecialSaleSeed());
+            modelBuilder.ApplyConfiguration(new CategorySaleSeed());
             modelBuilder.Entity<Coupon>()
                 .HasKey(c => new { c.CourseName, c.Code });
             modelBuilder.Entity<Coupon>()
@@ -39,6 +39,6 @@ namespace Discount.Infrastructure.Data
         }
 
         public DbSet<Coupon> Coupons { get; set; }
-        public DbSet<SpecialSale> Sales { get; set; }
+        public DbSet<CategorySale> Sales { get; set; }
     }
 }

@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Discount.Infrastructure.Data
 {
-    public class SpecialSaleSeed : IEntityTypeConfiguration<SpecialSale>
+    public class CategorySaleSeed : IEntityTypeConfiguration<CategorySale>
     {
-        public void Configure(EntityTypeBuilder<SpecialSale> builder)
+        public void Configure(EntityTypeBuilder<CategorySale> builder)
         {
             builder.HasData
             (
-                new SpecialSale
+                new CategorySale
                 {
                     Category = "Web",
-                    ExpiredAt = new DateTime(2023, 10, 1),
+                    ExpiredAt = new DateTime(2023, 10, 30),
                     Quantity = 50
                 }
             );

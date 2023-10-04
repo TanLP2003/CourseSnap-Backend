@@ -1,6 +1,5 @@
 using GrpcServer.GrpcService;
 using Discount.Infrastructure;
-using Discount.Domain.Contracts;
 using Discount.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Discount.Domain.Contracts;
+using Discount.Application.Contracts;
 using Discount.Domain.Entities;
 using Discount.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -13,20 +13,20 @@ using System.Threading.Tasks;
 
 namespace Discount.Infrastructure.Repositories
 {
-    public class SpecSaleRepo : RepositoryBase<SpecialSale>, ISpecSaleRepo
+    public class CategorySaleRepo : RepositoryBase<CategorySale>, ICategorySaleRepo
     {
         private readonly string _connectionString;
-        public SpecSaleRepo(DiscountContext context, IConfiguration configuration) : base(context) 
+        public CategorySaleRepo(DiscountContext context, IConfiguration configuration) : base(context) 
         {
             _connectionString = configuration.GetConnectionString("MySqlConnection");
         }
 
-        public async Task<SpecialSale> GetByCategory(string category)
+        public async Task<CategorySale> GetByCategory(string category)
         {
             using var connection = new MySqlConnection(_connectionString);
             var command = "SELECT * FROM Sales WHERE Category = @Category";
 
-            var specSale = await connection.QuerySingleOrDefaultAsync<SpecialSale>(command, new { Category = category });
+            var specSale = await connection.QuerySingleOrDefaultAsync<CategorySale>(command, new { Category = category });
             return specSale;
         }
     }

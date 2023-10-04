@@ -1,4 +1,4 @@
-﻿using Discount.Domain.Contracts;
+﻿using Discount.Application.Contracts;
 using Grpc.Core;
 using GrpcServer.Protos;
 
@@ -22,13 +22,15 @@ namespace GrpcServer.GrpcService
             var coupon = await _repo.Coupon.GetByNameAndCode(request.CourseName, request.Code);
             if (coupon != null && (DateTime.Today < coupon.ExpiredAt.Date))
             {
+                _logger.LogInformation("Get coupon ...");
                 result += coupon.Quantity;
             }
 
-            var specialSale = await _repo.SpecSale.GetByCategory(request.Category);
-            if (specialSale != null && (DateTime.Today < specialSale.ExpiredAt.Date))
+            var categorySale = await _repo.CategorySale.GetByCategory(request.Category);
+            if (categorySale != null && (DateTime.Today < categorySale.ExpiredAt.Date))
             {
-                result += specialSale.Quantity;
+                _logger.LogInformation("Get CategorySale");
+                result += categorySale.Quantity;
             }
 
             var response = new DiscountResponse

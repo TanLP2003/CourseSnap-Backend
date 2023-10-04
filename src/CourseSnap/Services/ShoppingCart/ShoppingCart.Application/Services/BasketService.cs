@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using ServiceBus.Events;
+using ShoppingCart.Application.Contracts;
 using ShoppingCart.Application.Models;
 using ShoppingCart.Application.Models.Checkout;
-using ShoppingCart.Domain.Contracts;
 using ShoppingCart.Domain.Entities;
 using ShoppingCart.Domain.Exceptions;
 using System;
@@ -49,9 +49,9 @@ namespace ShoppingCart.Application.Services
             {
                 throw new NotFoundException("Basket does not exist"); 
             }
-            basketCheckout.TotalCost = basket.TotalCost;
+            basketCheckout.CartPrice = basket.TotalCost;
             basketCheckout.Tax = Convert.ToInt32(basketCheckout.TotalCost * 0.05);
-            basketCheckout.FinalCost = basketCheckout.TotalCost + basketCheckout.Tax;
+            basketCheckout.TotalCost = basketCheckout.CartPrice + basketCheckout.Tax;
 
             basketCheckout.CartDescription = new List<BasketCheckoutItem>();
             foreach (var item in basket.Items)

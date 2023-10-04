@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Discount.Domain.Contracts
+namespace Discount.Application.Contracts
 {
-    public interface ISpecSaleRepo : IBaseRepo<SpecialSale>
+    public interface ICategorySaleRepo : IBaseRepo<CategorySale>
     {
-        Task<SpecialSale> GetByCategory(string category);
+        Task<CategorySale> GetByCategory(string category);
     }
 }

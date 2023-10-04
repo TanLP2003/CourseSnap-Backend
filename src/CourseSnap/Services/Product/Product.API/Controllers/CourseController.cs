@@ -8,7 +8,6 @@ namespace Product.API.Controllers
 {
     [Route("api/Course")]
     [ApiController]
-    [Authorize]
     public class CourseController : ControllerBase
     {
         private readonly ICourseService _service;
@@ -31,6 +30,7 @@ namespace Product.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create([FromBody] CourseCreateModel model)
         {
             if(!ModelState.IsValid)
@@ -42,6 +42,7 @@ namespace Product.API.Controllers
         }
 
         [HttpPut("{courseId}")]
+        [Authorize]
         public async Task<IActionResult> Update(string courseId, [FromBody] CourseUpdateModel model)
         {
             if (!ModelState.IsValid)
@@ -53,6 +54,7 @@ namespace Product.API.Controllers
         }
 
         [HttpDelete("{courseName}")]
+        [Authorize]
         public async Task<IActionResult> Delete(string courseName)
         {
             await _service.Delete(courseName);

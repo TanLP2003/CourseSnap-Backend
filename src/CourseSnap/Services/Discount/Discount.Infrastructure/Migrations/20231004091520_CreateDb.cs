@@ -22,7 +22,7 @@ namespace Discount.Infrastructure.Migrations
                 {
                     CourseName = table.Column<string>(type: "varchar(255)", nullable: false),
                     Code = table.Column<string>(type: "varchar(255)", nullable: false),
-                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
                     ExpiredAt = table.Column<DateTime>(type: "Date", nullable: false)
                 },
                 constraints: table =>
@@ -37,7 +37,7 @@ namespace Discount.Infrastructure.Migrations
                 {
                     Category = table.Column<string>(type: "varchar(255)", nullable: false),
                     ExpiredAt = table.Column<DateTime>(type: "Date", nullable: false),
-                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,14 +50,14 @@ namespace Discount.Infrastructure.Migrations
                 columns: new[] { "Code", "CourseName", "ExpiredAt", "Quantity" },
                 values: new object[,]
                 {
-                    { "qwer", "Dotnet Core", new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 75m },
-                    { "asdf", "Microservice", new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 100m }
+                    { "qwer", "Asp.net Core WebAPI", new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 75 },
+                    { "asdf", "Microservice", new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 100 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Sales",
                 columns: new[] { "Category", "ExpiredAt", "Quantity" },
-                values: new object[] { "Web", new DateTime(2023, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 50m });
+                values: new object[] { "Web", new DateTime(2023, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 50 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Coupons_Code",

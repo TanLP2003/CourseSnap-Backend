@@ -23,5 +23,4 @@ RUN dotnet publish "Identity.API.csproj" -c Release -o /app/publish /p:UseAppHos
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-RUN mkdir /shared
 ENTRYPOINT ["dotnet", "Identity.API.dll"]

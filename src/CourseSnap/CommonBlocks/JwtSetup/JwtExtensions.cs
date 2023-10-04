@@ -14,6 +14,7 @@ namespace JwtSetup
     {
         public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
         {
+            //var securityKey = configuration.GetSection("Security")["Key"];
             var securityKey = configuration.GetSection("SecurityKey").ToString();
             var encodedKey = Encoding.ASCII.GetBytes(securityKey);
 
@@ -24,8 +25,8 @@ namespace JwtSetup
             })
                 .AddJwtBearer(options =>
                 {
-                    //options.RequireHttpsMetadata = false;
-                    //options.SaveToken = true;
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
 
                     options.Events = new JwtBearerEvents
                     {

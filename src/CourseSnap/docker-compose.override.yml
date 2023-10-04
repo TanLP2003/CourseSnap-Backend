@@ -98,7 +98,7 @@ services:
       - discountdb
     ports:
       - "9003:80"
-
+ 
   payment.api:
     container_name: payment.api
     environment:
@@ -122,8 +122,6 @@ services:
       - "ConnectionStrings:DbConnection=Server=identitydb;Database=Identity;User ID=sa;Password=MsSQL123456;Integrated security=False;TrustServerCertificate=true;"
     ports:
       - "9005:80"
-    volumes:
-      - shareddata:/shared
     depends_on:
       - identitydb
 
@@ -135,5 +133,3 @@ services:
       - "JwtKeyOptions:PublicKeyFilePath=/shared/keys/public.xml"
     ports:
       - "9006:80"
-    volumes:
-      - shareddata:/shared

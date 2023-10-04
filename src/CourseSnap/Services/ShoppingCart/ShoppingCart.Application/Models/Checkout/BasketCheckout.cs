@@ -11,9 +11,9 @@ namespace ShoppingCart.Application.Models.Checkout
     {
         [Required]
         public string UserName { get; set; }
-        public int TotalCost { get; set; }
+        public int CartPrice { get; set; }
         public int Tax { get; set; } 
-        public int FinalCost { get; set; }
+        public int TotalCost { get; set; }
         public List<BasketCheckoutItem>? CartDescription { get; set; }
 
         public string? Country { get; set; }

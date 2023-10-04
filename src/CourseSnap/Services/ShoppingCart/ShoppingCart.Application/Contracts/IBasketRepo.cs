@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingCart.Domain.Contracts
+namespace ShoppingCart.Application.Contracts
 {
     public interface IBasketRepo
     {

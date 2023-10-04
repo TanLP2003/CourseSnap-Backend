@@ -1,4 +1,4 @@
-﻿using Discount.Domain.Contracts;
+﻿using Discount.Application.Contracts;
 using Discount.Infrastructure.Data;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -13,17 +13,17 @@ namespace Discount.Infrastructure.Repositories
     {
         private readonly DiscountContext _context;
         private readonly Lazy<ICouponRepo> _couponRepo;
-        private readonly Lazy<ISpecSaleRepo> _specSaleRepo;
+        private readonly Lazy<ICategorySaleRepo> _categorySaleRepo;
 
         public RepoManager(DiscountContext context, IConfiguration configuration)
         {
             _context = context;
             _couponRepo = new Lazy<ICouponRepo>(() => new CouponRepo(_context, configuration));
-            _specSaleRepo = new Lazy<ISpecSaleRepo>(() => new SpecSaleRepo(_context, configuration));
+            _categorySaleRepo = new Lazy<ICategorySaleRepo>(() => new CategorySaleRepo(_context, configuration));
         }
 
         public ICouponRepo Coupon => _couponRepo.Value;
-        public ISpecSaleRepo SpecSale=> _specSaleRepo.Value;
+        public ICategorySaleRepo CategorySale=> _categorySaleRepo.Value;
 
         public async Task SaveAsync() => await _context.SaveChangesAsync();
     }

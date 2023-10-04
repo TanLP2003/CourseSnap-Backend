@@ -1,15 +1,9 @@
 ﻿using AutoMapper;
+using Discount.Application.Contracts;
 using Discount.Application.Models;
 using Discount.Application.Services.Interface;
-using Discount.Domain.Contracts;
 using Discount.Domain.Entities;
 using Discount.Domain.Exceptions;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Discount.Application.Services
 {

@@ -19,6 +19,30 @@ namespace Discount.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Discount.Domain.Entities.CategorySale", b =>
+                {
+                    b.Property<string>("Category")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("ExpiredAt")
+                        .HasColumnType("Date");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Category");
+
+                    b.ToTable("Sales");
+
+                    b.HasData(
+                        new
+                        {
+                            Category = "Web",
+                            ExpiredAt = new DateTime(2023, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Quantity = 50
+                        });
+                });
+
             modelBuilder.Entity("Discount.Domain.Entities.Coupon", b =>
                 {
                     b.Property<string>("CourseName")
@@ -30,8 +54,8 @@ namespace Discount.Infrastructure.Migrations
                     b.Property<DateTime>("ExpiredAt")
                         .HasColumnType("Date");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("CourseName", "Code");
 
@@ -46,38 +70,14 @@ namespace Discount.Infrastructure.Migrations
                             CourseName = "Microservice",
                             Code = "asdf",
                             ExpiredAt = new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Quantity = 100m
+                            Quantity = 100
                         },
                         new
                         {
-                            CourseName = "Dotnet Core",
+                            CourseName = "Asp.net Core WebAPI",
                             Code = "qwer",
                             ExpiredAt = new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Quantity = 75m
-                        });
-                });
-
-            modelBuilder.Entity("Discount.Domain.Entities.SpecialSale", b =>
-                {
-                    b.Property<string>("Category")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime>("ExpiredAt")
-                        .HasColumnType("Date");
-
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Category");
-
-                    b.ToTable("Sales");
-
-                    b.HasData(
-                        new
-                        {
-                            Category = "Web",
-                            ExpiredAt = new DateTime(2023, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Quantity = 50m
+                            Quantity = 75
                         });
                 });
 #pragma warning restore 612, 618

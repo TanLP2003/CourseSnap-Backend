@@ -25,7 +25,7 @@ namespace Discount.Infrastructure.Data
                 new Coupon
                 {
                     //CourseId = "64f964855b0a72c6f137062d",
-                    CourseName = "Dotnet Core",
+                    CourseName = "Asp.net Core WebAPI",
                     Code = "qwer",
                     Quantity = 75,
                     ExpiredAt = new DateTime(2023, 12, 31)

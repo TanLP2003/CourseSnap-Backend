@@ -1,15 +1,10 @@
 ﻿using Discount.Application.ModelBinder;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Discount.Application.Models
 {
-    public class SpecialSaleModel
+    public class CategorySaleModel
     {
         [Required]
         public string Category { get; set; }

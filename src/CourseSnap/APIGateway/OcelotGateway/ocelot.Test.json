@@ -72,7 +72,11 @@
         }
       ],
       "UpstreamPathTemplate": "/Course/{name}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Course/{courseId}",
@@ -149,9 +153,9 @@
       "UpstreamPathTemplate": "/Discount/Coupon",
       "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
-    // SpecialSale
+    // CategorySale
     {
-      "DownstreamPathTemplate": "/api/Discount/SpecialSale/{category}",
+      "DownstreamPathTemplate": "/api/Discount/CategorySale/{category}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -159,11 +163,11 @@
           "Port": "8002"
         }
       ],
-      "UpstreamPathTemplate": "/Discount/SpecialSale/{category}",
+      "UpstreamPathTemplate": "/Discount/CategorySale/{category}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Discount/SpecialSale",
+      "DownstreamPathTemplate": "/api/Discount/CategorySale",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -171,7 +175,7 @@
           "Port": "8002"
         }
       ],
-      "UpstreamPathTemplate": "/Discount/SpecialSale",
+      "UpstreamPathTemplate": "/Discount/CategorySale",
       "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
     // Payment.API

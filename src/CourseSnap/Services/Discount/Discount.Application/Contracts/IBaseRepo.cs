@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Discount.Domain.Contracts
+namespace Discount.Application.Contracts
 {
     public interface IBaseRepo<T>
     {

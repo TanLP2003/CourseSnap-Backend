@@ -1,4 +1,4 @@
-﻿        using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Discount.API.Extensions
 {
@@ -11,19 +11,21 @@ namespace Discount.API.Extensions
             {
                 var service = scope.ServiceProvider;
                 var context = service.GetRequiredService<TContext>();
-                //var logger = service.GetRequiredService<ILogger>();
+                var logger = service.GetRequiredService<ILogger<Program>>();
                 try
                 {
                     context.Database.Migrate();
+                    logger.LogInformation("Migrate Database success");
                 }
                 catch (Exception ex)
                 {
                     if (retry <= 50)
                     {
+                        logger.LogWarning($"Migrate Failed [{retry}]......");
+                        Thread.Sleep(2000);
                         app.MigrateDb<TContext>(retry + 1);
                     }
                 }
-                //logger.LogInformation("Migrate Database success");
             }
         }
     }

@@ -88,7 +88,7 @@
     },
     //ShoppingCart.API
     {
-      "DownstreamPathTemplate": "/api/Basket/{userId:guid}",
+      "DownstreamPathTemplate": "/api/Basket/{userName}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -96,7 +96,7 @@
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Basket/{userId:guid}",
+      "UpstreamPathTemplate": "/Basket/{userName}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
@@ -149,9 +149,9 @@
       "UpstreamPathTemplate": "/Discount/Coupon",
       "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
-    // SpecialSale
+    // CategorySale
     {
-      "DownstreamPathTemplate": "/api/Discount/SpecialSale/{category}",
+      "DownstreamPathTemplate": "/api/Discount/CategorySale/{category}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -159,11 +159,11 @@
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Discount/SpecialSale/{category}",
+      "UpstreamPathTemplate": "/Discount/CategorySale/{category}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Discount/SpecialSale",
+      "DownstreamPathTemplate": "/api/Discount/CategorySale",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -171,7 +171,7 @@
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Discount/SpecialSale",
+      "UpstreamPathTemplate": "/Discount/CategorySale",
       "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
     // Payment.API

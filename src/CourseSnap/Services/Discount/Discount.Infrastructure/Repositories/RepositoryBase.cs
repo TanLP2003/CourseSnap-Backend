@@ -1,4 +1,4 @@
-﻿using Discount.Domain.Contracts;
+﻿using Discount.Application.Contracts;
 using Discount.Infrastructure.Data;
 using System;
 using System.Collections.Generic;

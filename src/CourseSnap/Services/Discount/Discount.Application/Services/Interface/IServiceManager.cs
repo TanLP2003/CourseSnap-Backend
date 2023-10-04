@@ -9,6 +9,6 @@ namespace Discount.Application.Services.Interface
     public interface IServiceManager
     {
         ICouponService Coupon { get; }
-        ISpecSaleService SpecSale { get; }
+        ICategorySaleService CategorySale { get; }
     }
 }

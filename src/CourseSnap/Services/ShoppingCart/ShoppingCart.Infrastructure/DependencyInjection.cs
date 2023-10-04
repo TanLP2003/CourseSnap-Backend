@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ShoppingCart.Domain.Contracts;
+using ShoppingCart.Application.Contracts;
 using ShoppingCart.Infrastructure.Repositories;
 using StackExchange.Redis;
 using System;

@@ -1,4 +1,4 @@
-﻿using ShoppingCart.Domain.Contracts;
+﻿using ShoppingCart.Application.Contracts;
 using ShoppingCart.Domain.Entities;
 using StackExchange.Redis;
 using System.Text.Json;
