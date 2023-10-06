@@ -50,7 +50,7 @@ namespace ShoppingCart.Application.Services
                 throw new NotFoundException("Basket does not exist"); 
             }
             basketCheckout.CartPrice = basket.TotalCost;
-            basketCheckout.Tax = Convert.ToInt32(basketCheckout.TotalCost * 0.05);
+            basketCheckout.Tax = Convert.ToInt32(basketCheckout.CartPrice * 0.05);
             basketCheckout.TotalCost = basketCheckout.CartPrice + basketCheckout.Tax;
 
             basketCheckout.CartDescription = new List<BasketCheckoutItem>();

@@ -63,6 +63,7 @@ services:
       - "CourseDbSettings:ConnectionString=mongodb://productdb:27017"
       - "CourseDbSettings:DatabaseName=CourseDb"
       - "CourseDbSettings:CollectionName=Courses"
+      - "SecurityKey:secretJWTsigningKey@1234567891234"
     ports:
       - "9000:80"
 
@@ -73,6 +74,7 @@ services:
       - "RedisSettings:ConnectionString=shoppingcartdb:6379"
       - "DiscountUrl:GrpcServer=http://grpcserver"
       - "RabbitmqUrl:HostAddress=amqp://guest:guest@rabbitmqserver:5672"
+      - "SecurityKey:secretJWTsigningKey@1234567891234"
     depends_on:
       - shoppingcartdb
       - grpcserver
@@ -107,6 +109,7 @@ services:
       - "BillDbSettings:DatabaseName=BillDb"
       - "BillDbSettings:CollectionName=Bills"
       - "RabbitmqUrl:HostAddress=amqp://guest:guest@rabbitmqserver:5672"
+      - "SecurityKey:secretJWTsigningKey@1234567891234"
     ports:
       - "9004:80"
     depends_on:
@@ -117,9 +120,8 @@ services:
     container_name: identity.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "JwtKeyOptions:PrivateKeyFilePath=/shared/keys/private.xml"
-      - "JwtKeyOptions:PublicKeyFilePath=/shared/keys/public.xml"
       - "ConnectionStrings:DbConnection=Server=identitydb;Database=Identity;User ID=sa;Password=MsSQL123456;Integrated security=False;TrustServerCertificate=true;"
+      - "SecurityKey:secretJWTsigningKey@1234567891234"
     ports:
       - "9005:80"
     depends_on:
@@ -129,7 +131,6 @@ services:
     container_name: ocelotgateway
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "JwtKeyOptions:PrivateKeyFilePath=/shared/keys/private.xml"
-      - "JwtKeyOptions:PublicKeyFilePath=/shared/keys/public.xml"
+      - "SecurityKey:secretJWTsigningKey@1234567891234"
     ports:
       - "9006:80"

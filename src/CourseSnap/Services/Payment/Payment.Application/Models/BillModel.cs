@@ -11,9 +11,9 @@ namespace Payment.Application.Models
     {
         public string BillId { get; set; }
         public string UserName { get; set; }
-        public int TotalCost { get; set; }
+        public int CartPrice { get; set; }
         public int Tax { get; set; }
-        public int FinalCost { get; set; }
+        public int TotalCost { get; set; }
         public List<CartItemModel>? CartDescription { get; set; }
         public string? TransactionTime { get; set; }
         public string? Country { get; set; }
