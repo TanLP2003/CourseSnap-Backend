@@ -1,1 +1,1 @@
-A Udemy clone app, using C# and Microservice Architecture
+APIs for an online course selling website, written in C# and utilizing the Microservices architecture
